@@ -229,8 +229,8 @@ function ActionBtn({ onClick, color, icon, label }) {
   return (
     <button
       onClick={onClick}
-      className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold transition-all hover:scale-105 whitespace-nowrap"
-      style={{ background: c.bg, color: c.text, border: `1px solid ${c.border}` }}
+      className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold transition-all hover:scale-x-75 whitespace-nowrap"
+      style={{outline: 'none', background: c.bg, color: c.text, border: `1px solid ${c.border}` }}
     >
       {icon}{label}
     </button>

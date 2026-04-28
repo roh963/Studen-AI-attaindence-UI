@@ -2,8 +2,10 @@ import toast from 'react-hot-toast'
 import { subjectAPI } from '../../services/api.js'
 
 export default function QRModal({ subject, onClose }) {
-  const joinUrl = `${window.location.origin}/student-login?join=${subject.subject_id}`
-  const qrSrc   = subjectAPI.qrUrl(subject.subject_id)
+  const STUDENT_APP_URL = import.meta.env.VITE_STUDENT_APP_URL ?? window.location.origin
+
+  const joinUrl = `${STUDENT_APP_URL}/student-login?join=${subject.subject_id}`
+  const qrSrc = subjectAPI.qrUrl(subject.subject_id)
 
   const copyLink = () => {
     navigator.clipboard.writeText(joinUrl)

@@ -2,6 +2,7 @@
 import { create } from 'zustand'
 
 const BASE_URL = import.meta.env.VITE_API_URL
+const STUDENT_APP_URL = import.meta.env.VITE_STUDENT_APP_URL ?? window.location.origin
 
 // ── Zustand Student Store ──────────────────────────────────────────────────────
 export const useStudentStore = create((set) => ({
@@ -135,9 +136,10 @@ export const subjectAPI = {
   },
 
   // Backend se PNG QR image aati hai — seedha <img src> mein use karo
-  qrUrl: (id) =>
-    `${BASE_URL}/subject/${id}/qr?base_url=${encodeURIComponent(window.location.origin)}&token=${localStorage.getItem('access_token')}`,
 
+
+qrUrl: (id) =>
+  `${BASE_URL}/subject/${id}/qr?base_url=${encodeURIComponent(STUDENT_APP_URL)}&token=${localStorage.getItem('access_token')}`,
   records: async () => {
     const res = await fetch(`${BASE_URL}/subject/attendance/records`, {
       headers: authHeaders(),
