@@ -1,5 +1,5 @@
 import toast from 'react-hot-toast'
-import { subjectAPI } from '../../services/api'
+import { subjectAPI } from '../../services/api.js'
 
 export default function QRModal({ subject, onClose }) {
   const joinUrl = `${window.location.origin}/student-login?join=${subject.subject_id}`
@@ -51,7 +51,7 @@ export default function QRModal({ subject, onClose }) {
         </div>
 
         <p className="text-xs text-center font-medium" style={{ color: '#9b8ec4' }}>
-          Student scan karega → Student Login page pe jaayega → Login ke baad automatically enroll ho jaayega
+          The student scans the system, is redirected to the login page, and upon successful login, is automatically enrolled.
         </p>
 
         {/* Join Link */}

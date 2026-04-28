@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
-import { authAPI } from '../services/api'
+import { authAPI } from '../services/api.js'
 
 export default function FacultySignup() {
   const navigate = useNavigate()

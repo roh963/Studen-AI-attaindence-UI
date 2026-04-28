@@ -1,13 +1,13 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
-import Home from './pages/Home'
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
-import FacultyLogin from './pages/FacultyLogin'
-import FacultySignup from './pages/FacultySignup'
-import StudentLogin from './pages/Studentlogin'
-import FacultyDashboard from './pages/FacultyDashboard'
-import StudentDashboard from './pages/StudentDashboard'
+import Home from './pages/Home.jsx'
+import Navbar from './components/Navbar.jsx'
+import Footer from './components/Footerjsx'
+import FacultyLogin from './pages/FacultyLogin.jsx'
+import FacultySignup from './pages/FacultySignup.jsx'
+import StudentLogin from './pages/StudentLogin.jsx'
+import FacultyDashboard from './pages/FacultyDashboard.jsx'
+import StudentDashboard from './pages/StudentDashboard.jsx'
 
 export default function App() {
   return (

@@ -13,7 +13,7 @@
 import { useRef, useState, useCallback, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
-import { studentAPI, useStudentStore } from '../services/api'
+import { studentAPI, useStudentStore } from '../services/api.js'
 
 // ── Spinner SVG ───────────────────────────────────────────────────────────────
 const Spinner = () => (

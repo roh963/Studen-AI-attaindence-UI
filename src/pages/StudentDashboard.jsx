@@ -5,10 +5,10 @@ import { useNavigate }         from 'react-router-dom'
 import toast                   from 'react-hot-toast'
 
 import { useStudentStore }  from '../services/api'
-import StudentHeader        from '../components/student/StudentHeader'
-import SubjectCard          from '../components/student/SubjectCard'
-import SkeletonCard         from '../components/student/SkeletonCard'
-import EmptyState           from '../components/student/EmptyState'
+import StudentHeader        from '../components/student/StudentHeader.jsx'
+import SubjectCard          from '../components/student/SubjectCard.jsx'
+import SkeletonCard         from '../components/student/SkeletonCard.jsx'
+import EmptyState           from '../components/student/EmptyState.jsx'
 
 const BASE_URL = import.meta.env.VITE_API_URL
 

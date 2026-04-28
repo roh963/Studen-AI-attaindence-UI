@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import toast from 'react-hot-toast'
-import { subjectAPI } from '../../services/api'
-import QRModal from './QRModal'
+import { subjectAPI } from '../../services/api.js'
+import QRModal from './Qrmodal.jsx'
 
 // ── Icon helpers ───────────────────────────────────────────────────────────────
 const PlusIcon = () => (

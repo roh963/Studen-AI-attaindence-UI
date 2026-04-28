@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { subjectAPI } from '../services/api'
+import { subjectAPI } from '../services/api.js'
 
 // ── Faculty sub-components ─────────────────────────────────────────────────────
 
-import WelcomeCard from '../components/faculty/Welcomecard'
-import TabBar from '../components/faculty/Tabbar'
-import TakeAttendanceTab from '../components/faculty/TakeAttendanceTab'
-import ManageSubjectsTab from '../components/faculty/Managesubjectstab'
-import AttendanceRecordsTab from '../components/faculty/Attendancerecordstab'
+import WelcomeCard from '../components/faculty/Welcomecard.jsx'
+import TabBar from '../components/faculty/Tabbar.jsx'
+import TakeAttendanceTab from '../components/faculty/TakeAttendanceTab.jsx'
+import ManageSubjectsTab from '../components/faculty/Managesubjectstab.jsx'
+import AttendanceRecordsTab from '../components/faculty/Attendancerecordstab.jsx'
 
 // ── JWT decode ────────────────────────────────────────────────────────────────
 function decodeJWT(token) {
