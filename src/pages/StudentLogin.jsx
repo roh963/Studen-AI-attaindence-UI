@@ -547,7 +547,7 @@ const handleRegister = async () => {
               </label>
               <input
                 type="text"
-                placeholder="E.g. Hamza Rizvi"
+                placeholder="E.g. Rohan Mehra"
                 value={regName}
                 onChange={(e) => setRegName(e.target.value)}
                 style={inputStyle}
