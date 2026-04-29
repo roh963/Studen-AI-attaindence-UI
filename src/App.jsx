@@ -20,7 +20,7 @@ export default function App() {
             <Route path="/student-login" element={<StudentLogin />} />
             <Route path="/faculty-login" element={<FacultyLogin />} />
             <Route path="/faculty-signup" element={<FacultySignup />} />
-            <Route path="//faculty-dashboard" element={<FacultyDashboard />} />
+            <Route path="/faculty-dashboard" element={<FacultyDashboard />} />
             <Route path="/student-dashboard" element={<StudentDashboard />} />
           </Routes>
         </main>

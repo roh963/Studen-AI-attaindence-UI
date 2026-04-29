@@ -252,29 +252,66 @@ export default function StudentLogin() {
   }
 
   // ── Register new student ─────────────────────────────────────────────────────
-  const handleRegister = async () => {
-    if (!regName.trim()) {
-      toast.error('Please enter your name')
-      return
-    }
-    if (!capturedImage) {
-      toast.error('No photo captured')
-      return
+  // const handleRegister = async () => {
+  //   if (!regName.trim()) {
+  //     toast.error('Please enter your name')
+  //     return
+  //   }
+  //   if (!capturedImage) {
+  //     toast.error('No photo captured')
+  //     return
+  //   }
+
+  //   setRegistering(true)
+  //   try {
+  //     const data = await studentAPI.create(regName.trim(), capturedImage, regAudio)
+  //     setStudent(data.student)
+  //     toast.success(`Profile created! Hi ${data.student.name} 🎉`)
+  //     stopCamera()
+  //     navigate('/student-dashboard')
+  //   } catch (err) {
+  //     toast.error(err.message || 'Could not create profile')
+  //   } finally {
+  //     setRegistering(false)
+  //   }
+  // }
+  // handleRegister function update karo
+const handleRegister = async () => {
+  if (!regName.trim()) {
+    toast.error('Please enter your name')
+    return
+  }
+  if (!capturedImage) {
+    toast.error('No photo captured')
+    return
+  }
+
+  setRegistering(true)
+  try {
+    const data = await studentAPI.create(regName.trim(), capturedImage, regAudio)
+    setStudent(data.student)
+    toast.success(`Profile created! Hi ${data.student.name} 🎉`)
+    stopCamera()
+
+    // ✅ Register ke baad bhi join check karo
+    const params = new URLSearchParams(window.location.search)
+    const joinId = params.get('join')
+    if (joinId && data.student?.student_id) {
+      try {
+        await studentAPI.enroll(joinId, data.student.student_id)
+        toast.success('Enrolled in subject!')
+      } catch (err) {
+        console.warn('Enroll skipped:', err.message)
+      }
     }
 
-    setRegistering(true)
-    try {
-      const data = await studentAPI.create(regName.trim(), capturedImage, regAudio)
-      setStudent(data.student)
-      toast.success(`Profile created! Hi ${data.student.name} 🎉`)
-      stopCamera()
-      navigate('/student-dashboard')
-    } catch (err) {
-      toast.error(err.message || 'Could not create profile')
-    } finally {
-      setRegistering(false)
-    }
+    navigate('/student-dashboard')
+  } catch (err) {
+    toast.error(err.message || 'Could not create profile')
+  } finally {
+    setRegistering(false)
   }
+}
 
   // ── Styles ───────────────────────────────────────────────────────────────────
   const card = {
