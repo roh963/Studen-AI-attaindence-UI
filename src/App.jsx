@@ -8,8 +8,15 @@ import FacultySignup from './pages/FacultySignup.jsx'
 import StudentLogin from './pages/StudentLogin.jsx'
 import FacultyDashboard from './pages/FacultyDashboard.jsx'
 import StudentDashboard from './pages/StudentDashboard.jsx'
+import { useEffect } from 'react'
 
 export default function App() {
+  useEffect(() => {
+  const ping = () => fetch(`${import.meta.env.VITE_API_URL}/health`).catch(() => {})
+  ping() // immediately
+  const id = setInterval(ping, 10 * 60 * 1000) // every 10 min 
+  return () => clearInterval(id)
+}, [])
   return (
     <BrowserRouter>
       <div className="flex flex-col min-h-screen">

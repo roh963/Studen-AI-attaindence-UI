@@ -84,19 +84,38 @@ export default function StudentLogin() {
   // ── Capture frame from webcam → base64 ─────────────────────────────────────
   // Yahi woh kaam hai jo Streamlit camera_input karta tha automatically.
   // React mein canvas.toDataURL() se same result milta hai.
+  // const captureFrame = useCallback(() => {
+  //   const video = videoRef.current
+  //   const canvas = canvasRef.current
+  //   if (!video || !canvas) return null
+
+  //   canvas.width = video.videoWidth || 640
+  //   canvas.height = video.videoHeight || 480
+  //   const ctx = canvas.getContext('2d')
+  //   ctx.drawImage(video, 0, 0, canvas.width, canvas.height)
+
+  //   // data:image/png;base64,XXXX  — backend strip karega prefix
+  //   return canvas.toDataURL('image/png')
+  // }, [])
+
   const captureFrame = useCallback(() => {
-    const video = videoRef.current
-    const canvas = canvasRef.current
-    if (!video || !canvas) return null
+  const video = videoRef.current
+  const canvas = canvasRef.current
+  if (!video || !canvas) return null
 
-    canvas.width = video.videoWidth || 640
-    canvas.height = video.videoHeight || 480
-    const ctx = canvas.getContext('2d')
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height)
+  // ✅ Max 640px width — dlib ke liye kaafi hai, 4x faster processing
+  const MAX_WIDTH = 640
+  const scale = Math.min(1, MAX_WIDTH / (video.videoWidth || 640))
+  
+  canvas.width = (video.videoWidth || 640) * scale
+  canvas.height = (video.videoHeight || 480) * scale
+  
+  const ctx = canvas.getContext('2d')
+  ctx.drawImage(video, 0, 0, canvas.width, canvas.height)
 
-    // data:image/png;base64,XXXX  — backend strip karega prefix
-    return canvas.toDataURL('image/png')
-  }, [])
+  // ✅ JPEG 0.85 — PNG se 5-10x chhota, face recognition ke liye kaafi hai
+  return canvas.toDataURL('image/jpeg', 0.85)
+}, [])
 
   // ── Scan face ───────────────────────────────────────────────────────────────
   // const handleScan = async () => {
